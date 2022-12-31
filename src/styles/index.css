@@ -1,0 +1,26 @@
+html,
+body {
+  color: var(--black);
+  background: var(--white);
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #383B50;
+  --white: white;
+}
