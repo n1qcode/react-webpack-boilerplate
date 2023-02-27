@@ -47,6 +47,7 @@
     ],
     "react/jsx-uses-vars": "error",
     "react/react-in-jsx-scope": "off",
+    "react-hooks/exhaustive-deps": 0,
     "@typescript-eslint/no-unused-vars": [
       "error",
       {

@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

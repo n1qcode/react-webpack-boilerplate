@@ -1,5 +1,5 @@
 import { FC } from "react";
 
-const SignUp: FC = () => <h1>SignUp page</h1>;
+const SignUp: FC = () => <h1>Sign Up page</h1>;
 
 export default SignUp;

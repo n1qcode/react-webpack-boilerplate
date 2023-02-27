@@ -5,7 +5,7 @@ import router from "./routes/routes";
 
 const App = () => {
   return (
-    <Suspense fallback={<div>loading...</div>}>
+    <Suspense fallback={<div>Loading...</div>}>
       <RouterProvider router={router} />
     </Suspense>
   );

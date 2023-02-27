@@ -4,7 +4,7 @@ import { IAuth } from "./auth.slice.typings";
 
 const initialState: IAuth = {
   isAuth: false,
-  role: "user",
+  role: "guest",
 };
 
 export const authSlice = createSlice({
@@ -14,12 +14,15 @@ export const authSlice = createSlice({
     login: (state: IAuth, action) => {
       state.isAuth = action.payload.isAuth;
       state.role = action.payload.role;
+      localStorage.setItem("auth", "true");
     },
     logout: (state: IAuth) => {
       state.isAuth = false;
-      state.role = "user";
+      state.role = "guest";
+      localStorage.removeItem("auth");
     },
   },
 });
 
+export const { login, logout } = authSlice.actions;
 export default authSlice.reducer;

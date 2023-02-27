@@ -1,51 +1,26 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import { lazy } from "react";
 
-import AuthGuard from "../components/AuthGuard/AuthGuard";
+import AuthProvider from "../providers/AuthProvider";
+import LocaleProvider from "../providers/LocaleProvider";
 
 import { RouteNames } from "./routes.enum";
+import publicPages from "./public";
+import privatePages from "./private";
 
-const Login = lazy(() => import("../pages/public/Login"));
-const SignUp = lazy(() => import("../pages/public/SignUp"));
-const Start = lazy(() => import("../pages/private/Start"));
 const Layout = lazy(() => import("../layout/Layout"));
 
 const router = createBrowserRouter([
   {
     path: RouteNames.HOME,
     element: (
-      <AuthGuard>
-        <Layout />
-      </AuthGuard>
+      <AuthProvider>
+        <LocaleProvider>
+          <Layout />
+        </LocaleProvider>
+      </AuthProvider>
     ),
-    children: [
-      {
-        path: RouteNames.HOME,
-        element: <Navigate to={RouteNames.START} />,
-      },
-      {
-        path: RouteNames.GUEST,
-        element: <Login />,
-        children: [
-          {
-            path: RouteNames.GUEST,
-            element: <Navigate to={RouteNames.LOGIN} />,
-          },
-          {
-            path: RouteNames.LOGIN,
-            element: <Login />,
-          },
-          {
-            path: RouteNames.SIGNUP,
-            element: <SignUp />,
-          },
-        ],
-      },
-      {
-        path: RouteNames.START,
-        element: <Start />,
-      },
-    ],
+    children: [...publicPages, ...privatePages],
   },
   {
     path: "*",

@@ -1,4 +1,4 @@
-type IRole = "user" | "admin";
+type IRole = "guest" | "user" | "admin";
 
 export interface IAuth {
   isAuth: boolean;

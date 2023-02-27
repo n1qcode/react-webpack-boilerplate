@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface IAuthGuard {
+export interface ILocaleProvider {
   children: ReactNode;
 }

@@ -1,2 +1,4 @@
-export const DEFAULT_LANGUAGE = "ru";
-export const SUPPORTED_LANGUAGES = ["ru", "en"];
+import { LanguageType } from "./i18n.typings";
+
+export const DEFAULT_LANGUAGE: LanguageType = "ru";
+export const SUPPORTED_LANGUAGES: LanguageType[] = ["ru", "en"];

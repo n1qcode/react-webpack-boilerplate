@@ -2,8 +2,9 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 
 import logging from "./middlewares/logging";
 import rootReducer from "./reducers";
+import authApi from "./api/auth.api";
 
-const middlewares = [logging];
+const middlewares = [logging, authApi.middleware];
 
 const store = configureStore({
   reducer: rootReducer,

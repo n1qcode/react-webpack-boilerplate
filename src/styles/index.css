@@ -1,8 +1,15 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
+  height: 100%;
   color: var(--black);
-  background: var(--white);
   font-family: "Noto Sans KR", sans-serif;
+  background: var(--white);
 }
 
 li {
@@ -10,14 +17,12 @@ li {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+#root {
+  height: 100%;
 }
 
 :root {
