@@ -1,19 +1,19 @@
 import { lazy } from "react";
 
-import { RouteNames } from "./routes.enum";
+import { PublicRoutes } from "./routes.enum";
 
-const Login = lazy(() => import("../pages/public/Login"));
-const SignUp = lazy(() => import("../pages/public/SignUp"));
+const Login = lazy(() => import("../content/public/Login"));
+const SignUp = lazy(() => import("../content/public/SignUp"));
 
-const publicPages = [
+const publicContent = [
   {
-    path: RouteNames.LOGIN,
+    path: PublicRoutes.LOGIN,
     element: <Login />,
   },
   {
-    path: RouteNames.SIGNUP,
+    path: PublicRoutes.SIGNUP,
     element: <SignUp />,
   },
 ];
 
-export default publicPages;
+export default publicContent;

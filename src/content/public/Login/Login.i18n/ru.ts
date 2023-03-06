@@ -3,4 +3,5 @@ export const ru = {
   password: "Пароль",
   login: "Войти",
   signup: "Регистрация",
+  greeting: "Добро пожаловать!",
 };

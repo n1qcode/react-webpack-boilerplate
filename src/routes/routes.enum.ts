@@ -1,6 +1,12 @@
 export enum RouteNames {
-  HOME = "/",
+  ROOT = "/",
+}
+
+export enum PublicRoutes {
   LOGIN = "login",
   SIGNUP = "signup",
+}
+
+export enum PrivateRoutes {
   START = "start",
 }

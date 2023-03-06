@@ -1,14 +1,14 @@
 import { lazy } from "react";
 
-import { RouteNames } from "./routes.enum";
+import { PrivateRoutes } from "./routes.enum";
 
-const Start = lazy(() => import("../pages/private/Start"));
+const Start = lazy(() => import("../content/private/Start"));
 
-const privatePages = [
+const privateContent = [
   {
-    path: RouteNames.START,
+    path: PrivateRoutes.START,
     element: <Start />,
   },
 ];
 
-export default privatePages;
+export default privateContent;

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`declinationExecutor 0: { description: 'one', count: 1, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 1: { description: 'one', count: 21, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 2: { description: 'one', count: 31, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 3: { description: 'one', count: 41, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 4: { description: 'one', count: 101, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 5: { description: 'few', count: 2, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 6: { description: 'few', count: 3, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 7: { description: 'few', count: 4, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 8: { description: 'few', count: 54, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 9: { description: 'few', count: 104, result: 'tomato' } 1`] = `"tomato"`;
+
+exports[`declinationExecutor 10: { description: 'many', count: 0, result: 'tomatoes' } 1`] = `"tomatoes"`;
+
+exports[`declinationExecutor 11: { description: 'many', count: 5, result: 'tomatoes' } 1`] = `"tomatoes"`;
+
+exports[`declinationExecutor 12: { description: 'many', count: 6, result: 'tomatoes' } 1`] = `"tomatoes"`;
+
+exports[`declinationExecutor 13: { description: 'many', count: 50, result: 'tomatoes' } 1`] = `"tomatoes"`;
+
+exports[`declinationExecutor 14: { description: 'many', count: 110, result: 'tomatoes' } 1`] = `"tomatoes"`;
+
+exports[`declinationExecutor 15: { description: 'many', count: 500, result: 'tomatoes' } 1`] = `"tomatoes"`;

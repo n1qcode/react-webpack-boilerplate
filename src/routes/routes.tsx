@@ -1,31 +1,37 @@
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 
-import AuthProvider from "../providers/AuthProvider";
 import LocaleProvider from "../providers/LocaleProvider";
+import useAuth from "../hooks/useAuth";
 
 import { RouteNames } from "./routes.enum";
-import publicPages from "./public";
-import privatePages from "./private";
 
 const Layout = lazy(() => import("../layout/Layout"));
 
-const router = createBrowserRouter([
-  {
-    path: RouteNames.HOME,
-    element: (
-      <AuthProvider>
+const AppRouter = () => {
+  const [routes, initialContent] = useAuth();
+
+  return createBrowserRouter([
+    {
+      path: RouteNames.ROOT,
+      element: (
         <LocaleProvider>
           <Layout />
         </LocaleProvider>
-      </AuthProvider>
-    ),
-    children: [...publicPages, ...privatePages],
-  },
-  {
-    path: "*",
-    element: <Navigate to={RouteNames.HOME} />,
-  },
-]);
+      ),
+      children: [
+        {
+          path: RouteNames.ROOT,
+          element: initialContent,
+        },
+        ...routes,
+      ],
+    },
+    {
+      path: "*",
+      element: initialContent,
+    },
+  ]);
+};
 
-export default router;
+export default AppRouter;

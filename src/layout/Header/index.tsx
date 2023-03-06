@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import useAppDispatch from "../../hooks/redux/useAppDispatch";
 import { useLazyLogoutQuery } from "../../store/api/auth.api";
 import { logout } from "../../store/slices/auth/auth.slice";
-import useLocale from "../../hooks/useLocale";
+import useTranslation from "../../hooks/useTranslation";
 import LocalizationPerformer from "../../components/LocalizationPerformer";
 
 import styles from "./Header.module.css";
@@ -12,7 +12,7 @@ import * as keySet from "./HeadBar.i18n";
 
 const Header = () => {
   const dispatch = useAppDispatch();
-  const t = useLocale(keySet);
+  const t = useTranslation(keySet);
 
   const [logoutRequest, { data: logoutRequestData }] = useLazyLogoutQuery();
 
