@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import {
   Button,
   FormControl,
@@ -11,67 +11,31 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
 
-import useAppDispatch from "../../../hooks/redux/useAppDispatch";
-import { useLoginMutation } from "../../../store/api/auth.api";
-import { login } from "../../../store/slices/auth/auth.slice";
-import useTranslation from "../../../hooks/useTranslation";
 import LocalizationPerformer from "../../../components/LocalizationPerformer";
-import { PublicRoutes, RouteNames } from "../../../routes/routes.enum";
 import styles from "../../../styles/auth.module.css/auth.module.css";
+import { FormDataType } from "../../../typings/forms.typings";
 
-import * as keySet from "./Login.i18n";
-
-const schema = yup
-  .object({
-    login: yup.string().required("Login is required field"),
-    password: yup
-      .string()
-      .required("Password is required field")
-      .min(8, "Password must be at least 8 characters long"),
-  })
-  .required();
-type FormData = yup.InferType<typeof schema>;
+import useLogin from "./useLogin";
 
 const Login: FC = () => {
-  const dispatch = useAppDispatch();
-  const router = useNavigate();
-  const t = useTranslation(keySet);
+  const {
+    t,
+    schema,
+    showPassword,
+    onSubmit,
+    signUpHandler,
+    handleClickShowPassword,
+    handleMouseDownPassword,
+  } = useLogin();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<FormDataType<typeof schema>>({
     resolver: yupResolver(schema),
   });
-  const [loginRequest, { data: loginRequestData }] = useLoginMutation();
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
-  useEffect(() => {
-    if (!loginRequestData) return;
-    console.log("loginRequestData --- ", loginRequestData);
-  }, [loginRequestData]);
-
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-    loginRequest({ login: "", password: "" });
-    // TODO move following code to useEffect after connected auth api
-    dispatch(login({ isAuth: true }));
-  };
-
-  const signUpHandler = () =>
-    router(`${RouteNames.ROOT}${PublicRoutes.SIGNUP}`);
 
   return (
     <div className={styles.root}>
@@ -82,7 +46,7 @@ const Login: FC = () => {
           variant="outlined"
           {...register("login")}
           error={!!errors.login}
-          helperText={errors.login?.message}
+          helperText={t(errors.login?.message ?? "")}
         />
         <FormControl variant="outlined">
           <InputLabel
@@ -112,7 +76,7 @@ const Login: FC = () => {
           />
           {errors.password && (
             <FormHelperText error={!!errors.password} id="password-helper-text">
-              {errors.password?.message}
+              {t(errors.password?.message ?? "")}
             </FormHelperText>
           )}
         </FormControl>

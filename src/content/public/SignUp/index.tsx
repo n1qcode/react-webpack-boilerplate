@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import {
   Button,
   FormControl,
@@ -11,77 +11,33 @@ import {
 } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
 
-import { useSignupMutation } from "../../../store/api/auth.api";
-import useTranslation from "../../../hooks/useTranslation";
 import LocalizationPerformer from "../../../components/LocalizationPerformer";
-import { PublicRoutes, RouteNames } from "../../../routes/routes.enum";
 import styles from "../../../styles/auth.module.css/auth.module.css";
+import { FormDataType } from "../../../typings/forms.typings";
 
-import * as keySet from "./SignUp.i18n";
-
-const schema = yup
-  .object({
-    login: yup.string().required("Login is required field"),
-    email: yup.string().required("Email is required field").email(),
-    signupPassword: yup
-      .string()
-      .required()
-      .min(8, "Password must be at least 8 characters long")
-      .matches(/[a-z]/, "Password must contain at least one lowercase letter")
-      .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-      .matches(/\d/, "Password must contain at least one numeric digit")
-      .matches(
-        /[!@#$%^&*(),.?":{}|<>]/,
-        "Password must contain at least one special character"
-      ),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref("signupPassword")], "Passwords must match"),
-  })
-  .required();
-type FormData = yup.InferType<typeof schema>;
+import useSignUp from "./useSignUp";
 
 const SignUp: FC = () => {
-  const router = useNavigate();
-  const t = useTranslation(keySet);
+  const {
+    t,
+    schema,
+    showPassword,
+    showPasswordConfirm,
+    handleClickShowPasswordConfirm,
+    handleClickShowPassword,
+    handleMouseDownPassword,
+    onSubmit,
+    backToLoginHandler,
+  } = useSignUp();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<FormDataType<typeof schema>>({
     resolver: yupResolver(schema),
   });
-  const [signUpRequest, { data: signUpRequestData }] = useSignupMutation();
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-  const handleClickShowPasswordConfirm = () =>
-    setShowPasswordConfirm((show) => !show);
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
-  useEffect(() => {
-    if (!signUpRequestData) return;
-    console.log("signUpRequestData --- ", signUpRequestData);
-    router(PublicRoutes.LOGIN);
-  }, [signUpRequestData]);
-
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-    signUpRequest({ login: "", password: "", email: "" });
-  };
-
-  const backToLoginHandler = () =>
-    router(`${RouteNames.ROOT}${PublicRoutes.LOGIN}`);
 
   return (
     <div className={styles.root}>
@@ -92,14 +48,14 @@ const SignUp: FC = () => {
           variant="outlined"
           {...register("login")}
           error={!!errors.login}
-          helperText={errors.login?.message}
+          helperText={t(errors.login?.message ?? "")}
         />
         <TextField
           label={"Email"}
           variant="outlined"
           {...register("email")}
           error={!!errors.email}
-          helperText={errors.email?.message}
+          helperText={t(errors.email?.message ?? "")}
         />
         <FormControl variant="outlined">
           <InputLabel
@@ -132,7 +88,7 @@ const SignUp: FC = () => {
               error={!!errors.signupPassword}
               id="signupPassword-helper-text"
             >
-              {errors.signupPassword?.message}
+              {t(errors.signupPassword?.message ?? "")}
             </FormHelperText>
           )}
         </FormControl>
@@ -167,7 +123,7 @@ const SignUp: FC = () => {
               error={!!errors.confirmPassword}
               id="confirmPassword-helper-text"
             >
-              {errors.confirmPassword?.message}
+              {t(errors.confirmPassword?.message ?? "")}
             </FormHelperText>
           )}
         </FormControl>
