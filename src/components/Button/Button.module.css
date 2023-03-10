@@ -1,0 +1,8 @@
+.root {
+  border: none;
+  cursor: pointer;
+}
+
+.ghost {
+  background: var(--ghost);;
+}

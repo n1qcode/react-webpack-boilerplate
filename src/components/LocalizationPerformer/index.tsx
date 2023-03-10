@@ -6,10 +6,11 @@ import useAppSelector from "../../hooks/redux/useAppSelector";
 import useAppDispatch from "../../hooks/redux/useAppDispatch";
 import useTranslation from "../../hooks/useTranslation";
 import * as keySet from "../LocalizationPerformer/LocalizationPerformer.i18n";
+import { selectLanguage } from "../../store/slices/locale/selectors";
 
 const LocalizationPerformer = () => {
   const dispatch = useAppDispatch();
-  const { language } = useAppSelector((store) => store.localeReducer);
+  const language = useAppSelector(selectLanguage);
 
   const t = useTranslation(keySet);
 

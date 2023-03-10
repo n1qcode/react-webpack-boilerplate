@@ -5,13 +5,14 @@ import privatePages from "../routes/private";
 import publicPages from "../routes/public";
 import { PrivateRoutes, PublicRoutes } from "../routes/routes.enum";
 import { login } from "../store/slices/auth/auth.slice";
+import { selectIsAuth } from "../store/slices/auth/selectors";
 
 import useAppSelector from "./redux/useAppSelector";
 import useAppDispatch from "./redux/useAppDispatch";
 
 const useAuth = (): [RouteObject[], ReactNode] => {
   const dispatch = useAppDispatch();
-  const { isAuth } = useAppSelector((state) => state.authReducer);
+  const isAuth = useAppSelector(selectIsAuth);
   const routes = isAuth ? privatePages : publicPages;
   const initialContent = isAuth ? (
     <Navigate to={PrivateRoutes.START} />
@@ -20,9 +21,11 @@ const useAuth = (): [RouteObject[], ReactNode] => {
   );
 
   useEffect(() => {
-    const isAuthStored = localStorage.getItem("auth");
-    if (isAuthStored) {
-      dispatch(login({ isAuth: true }));
+    const userName = localStorage.getItem("user");
+    if (userName) {
+      dispatch(
+        login({ isAuth: true, user: { login: userName, role: "admin" } })
+      );
     }
   }, []);
 

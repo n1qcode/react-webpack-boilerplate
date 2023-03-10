@@ -1,6 +1,11 @@
-type IRole = "guest" | "user" | "admin";
+type RoleType = "guest" | "user" | "admin";
+
+export interface IUser {
+  role: RoleType;
+  login?: string;
+}
 
 export interface IAuth {
   isAuth: boolean;
-  role: IRole;
+  user: IUser;
 }

@@ -1,25 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IAuth } from "./auth.slice.typings";
+import { IAuth, IUser } from "./auth.slice.typings";
+
+const initialUser: IUser = {
+  role: "guest",
+};
 
 const initialState: IAuth = {
   isAuth: false,
-  role: "guest",
+  user: initialUser,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    login: (state: IAuth, action) => {
+    login: (state: IAuth, action: PayloadAction<IAuth>) => {
       state.isAuth = action.payload.isAuth;
-      state.role = action.payload.role;
-      localStorage.setItem("auth", "true");
+      state.user = action.payload.user;
+
+      const userName = action?.payload?.user.login;
+      if (userName) localStorage.setItem("user", userName);
     },
     logout: (state: IAuth) => {
       state.isAuth = false;
-      state.role = "guest";
-      localStorage.removeItem("auth");
+      state.user = initialUser;
+      localStorage.removeItem("user");
     },
   },
 });

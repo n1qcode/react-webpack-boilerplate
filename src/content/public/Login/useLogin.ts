@@ -46,7 +46,9 @@ const useLogin = () => {
     console.log(data);
     loginRequest({ login: "", password: "" });
     // TODO move following code to useEffect after connected auth api
-    dispatch(login({ isAuth: true }));
+    dispatch(
+      login({ isAuth: true, user: { login: data.login, role: "admin" } })
+    );
   };
 
   const signUpHandler = () =>

@@ -3,11 +3,12 @@
   align-items: center;
   justify-content: space-around;
   padding: 20px;
-  background: lightseagreen;
+  background: var(--header-back);
 }
 
 .buttons {
   display: flex;
+  gap: 10px;
   align-items: center;
   justify-content: space-between;
 }

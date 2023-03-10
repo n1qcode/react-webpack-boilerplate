@@ -28,4 +28,6 @@ a {
 :root {
   --black: #383B50;
   --white: white;
+  --ghost: transparent;
+  --header-back: lightseagreen;
 }

@@ -48,14 +48,14 @@ const SignUp: FC = () => {
           variant="outlined"
           {...register("login")}
           error={!!errors.login}
-          helperText={t(errors.login?.message ?? "")}
+          helperText={errors.login?.message ? t(errors.login.message) : ""}
         />
         <TextField
           label={"Email"}
           variant="outlined"
           {...register("email")}
           error={!!errors.email}
-          helperText={t(errors.email?.message ?? "")}
+          helperText={errors.email?.message ? t(errors.email.message) : ""}
         />
         <FormControl variant="outlined">
           <InputLabel
@@ -88,7 +88,9 @@ const SignUp: FC = () => {
               error={!!errors.signupPassword}
               id="signupPassword-helper-text"
             >
-              {t(errors.signupPassword?.message ?? "")}
+              {errors.signupPassword?.message
+                ? t(errors.signupPassword.message)
+                : ""}
             </FormHelperText>
           )}
         </FormControl>
@@ -123,7 +125,9 @@ const SignUp: FC = () => {
               error={!!errors.confirmPassword}
               id="confirmPassword-helper-text"
             >
-              {t(errors.confirmPassword?.message ?? "")}
+              {errors.confirmPassword?.message
+                ? t(errors.confirmPassword.message)
+                : ""}
             </FormHelperText>
           )}
         </FormControl>

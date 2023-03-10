@@ -46,7 +46,7 @@ const Login: FC = () => {
           variant="outlined"
           {...register("login")}
           error={!!errors.login}
-          helperText={t(errors.login?.message ?? "")}
+          helperText={errors.login?.message ? t(errors.login.message) : ""}
         />
         <FormControl variant="outlined">
           <InputLabel
@@ -76,7 +76,7 @@ const Login: FC = () => {
           />
           {errors.password && (
             <FormHelperText error={!!errors.password} id="password-helper-text">
-              {t(errors.password?.message ?? "")}
+              {errors.password?.message ? t(errors.password.message) : ""}
             </FormHelperText>
           )}
         </FormControl>
