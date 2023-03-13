@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  transition: color 500ms linear, background 500ms linear;
 }
 
 
