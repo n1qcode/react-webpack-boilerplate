@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 
-import { useSignupMutation } from "../../../store/api/auth.api";
-import useTranslation from "../../../hooks/useTranslation";
-import { PublicRoutes, RouteNames } from "../../../routes/routes.enum";
-import { FormDataType } from "../../../typings/forms.typings";
+import { useSignupMutation } from "../../../../store/api/auth.api";
+import useTranslation from "../../../../hooks/useTranslation";
+import { PublicRoutes } from "../../../../routes/routes.enum";
+import { FormDataType } from "../../../../typings/forms.typings";
 
 import * as keySet from "./SignUp.i18n";
 
@@ -59,8 +59,7 @@ const useSignUp = () => {
     signUpRequest({ login: "", password: "", email: "" });
   };
 
-  const backToLoginHandler = () =>
-    router(`${RouteNames.ROOT}${PublicRoutes.LOGIN}`);
+  const backToLoginHandler = () => router(PublicRoutes.LOGIN);
 
   return {
     t,

@@ -1,4 +1,4 @@
-import { LanguageType } from "./i18n.typings";
+import { LanguageEnum } from "./i18n.enums";
 
-export const DEFAULT_LANGUAGE: LanguageType = "ru";
-export const SUPPORTED_LANGUAGES: LanguageType[] = ["ru", "en"];
+export const DEFAULT_LANGUAGE = LanguageEnum.RU;
+export const SUPPORTED_LANGUAGES = Object.values(LanguageEnum);

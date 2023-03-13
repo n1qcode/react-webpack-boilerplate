@@ -1,4 +1,4 @@
-export const en = {
+export const EN = {
   name: "Login",
   password: "Password",
   login: "Log In",

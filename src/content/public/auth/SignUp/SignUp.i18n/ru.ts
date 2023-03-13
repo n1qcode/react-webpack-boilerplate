@@ -1,4 +1,4 @@
-export const ru = {
+export const RU = {
   join: "Присоединяйтесь!",
   name: "Логин",
   password: "Пароль",

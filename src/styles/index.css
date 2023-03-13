@@ -7,9 +7,7 @@
 html,
 body {
   height: 100%;
-  color: var(--black);
   font-family: "Noto Sans KR", sans-serif;
-  background: var(--white);
 }
 
 li {
@@ -26,8 +24,11 @@ a {
 }
 
 :root {
-  --black: #383B50;
-  --white: white;
   --ghost: transparent;
-  --header-back: lightseagreen;
+  --bg-light: white;
+  --bg-dark: #766F6F;
+  --bg-light-header: lightseagreen;
+  --bg-dark-header: #B26B20;
+  --text-light:  #383B50;
+  --text-dark:  white;
 }

@@ -13,9 +13,9 @@ import { useForm } from "react-hook-form";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import LocalizationPerformer from "../../../components/LocalizationPerformer";
-import styles from "../../../styles/auth.module.css/auth.module.css";
-import { FormDataType } from "../../../typings/forms.typings";
+import styles from "../../../../styles/auth.module.css/auth.module.css";
+import { FormDataType } from "../../../../typings/forms.typings";
+import AuxiliaryButtons from "../AuxiliaryButtons";
 
 import useLogin from "./useLogin";
 
@@ -87,7 +87,7 @@ const Login: FC = () => {
           {t("signup")}
         </Button>
       </form>
-      <LocalizationPerformer />
+      <AuxiliaryButtons />
     </div>
   );
 };

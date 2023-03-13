@@ -3,6 +3,7 @@ import { lazy } from "react";
 
 import LocaleProvider from "../providers/LocaleProvider";
 import useAuth from "../hooks/useAuth";
+import ThemeProvider from "../providers/ThemeProvider";
 
 import { RouteNames } from "./routes.enum";
 
@@ -15,9 +16,11 @@ const AppRouter = () => {
     {
       path: RouteNames.ROOT,
       element: (
-        <LocaleProvider>
-          <Layout />
-        </LocaleProvider>
+        <ThemeProvider>
+          <LocaleProvider>
+            <Layout />
+          </LocaleProvider>
+        </ThemeProvider>
       ),
       children: [
         {

@@ -7,6 +7,7 @@ import useAppDispatch from "../../hooks/redux/useAppDispatch";
 import useTranslation from "../../hooks/useTranslation";
 import * as keySet from "../LocalizationPerformer/LocalizationPerformer.i18n";
 import { selectLanguage } from "../../store/slices/locale/selectors";
+import { LanguageEnum } from "../../utils/i18n/i18n.enums";
 
 const LocalizationPerformer = () => {
   const dispatch = useAppDispatch();
@@ -14,8 +15,8 @@ const LocalizationPerformer = () => {
 
   const t = useTranslation(keySet);
 
-  const changeLanguageHandler = (lang: string) => {
-    dispatch(toggleLanguage(lang));
+  const changeLanguageHandler = (language: string) => {
+    dispatch(toggleLanguage(language as LanguageEnum));
   };
 
   const toggleLangProps: ISelect = {

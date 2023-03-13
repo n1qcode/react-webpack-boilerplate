@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-around;
   padding: 20px;
-  background: var(--header-back);
+  box-shadow: rgb(0 0 0 / 20%) 0 2px 4px -1px, rgb(0 0 0 / 14%) 0 4px 5px 0, rgb(0 0 0 / 12%) 0 1px 10px 0;
 }
 
 .buttons {
@@ -11,4 +11,12 @@
   gap: 10px;
   align-items: center;
   justify-content: space-between;
+}
+
+.light {
+  background: var(--bg-light-header);
+}
+
+.dark {
+  background: var(--bg-dark-header);
 }

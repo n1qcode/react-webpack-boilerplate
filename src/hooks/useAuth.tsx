@@ -6,6 +6,8 @@ import publicPages from "../routes/public";
 import { PrivateRoutes, PublicRoutes } from "../routes/routes.enum";
 import { login } from "../store/slices/auth/auth.slice";
 import { selectIsAuth } from "../store/slices/auth/selectors";
+import { UserRolesEnum } from "../store/slices/auth/auth.enums";
+import { LocalStorageEnum } from "../enums/localStorage.enums";
 
 import useAppSelector from "./redux/useAppSelector";
 import useAppDispatch from "./redux/useAppDispatch";
@@ -21,10 +23,13 @@ const useAuth = (): [RouteObject[], ReactNode] => {
   );
 
   useEffect(() => {
-    const userName = localStorage.getItem("user");
+    const userName = localStorage.getItem(LocalStorageEnum.USER);
     if (userName) {
       dispatch(
-        login({ isAuth: true, user: { login: userName, role: "admin" } })
+        login({
+          isAuth: true,
+          user: { login: userName, role: UserRolesEnum.ADMIN },
+        })
       );
     }
   }, []);

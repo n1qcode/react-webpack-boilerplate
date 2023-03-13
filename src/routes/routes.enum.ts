@@ -3,10 +3,10 @@ export enum RouteNames {
 }
 
 export enum PublicRoutes {
-  LOGIN = "login",
-  SIGNUP = "signup",
+  LOGIN = "/login",
+  SIGNUP = "/signup",
 }
 
 export enum PrivateRoutes {
-  START = "start",
+  START = "/start",
 }

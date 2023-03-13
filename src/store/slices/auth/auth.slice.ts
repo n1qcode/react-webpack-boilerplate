@@ -1,9 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { IAuth, IUser } from "./auth.slice.typings";
+import { LocalStorageEnum } from "../../../enums/localStorage.enums";
+
+import { UserRolesEnum } from "./auth.enums";
+import { IAuth, IUser } from "./auth.typings";
 
 const initialUser: IUser = {
-  role: "guest",
+  role: UserRolesEnum.GUEST,
 };
 
 const initialState: IAuth = {
@@ -20,12 +23,12 @@ export const authSlice = createSlice({
       state.user = action.payload.user;
 
       const userName = action?.payload?.user.login;
-      if (userName) localStorage.setItem("user", userName);
+      if (userName) localStorage.setItem(LocalStorageEnum.USER, userName);
     },
     logout: (state: IAuth) => {
       state.isAuth = false;
       state.user = initialUser;
-      localStorage.removeItem("user");
+      localStorage.removeItem(LocalStorageEnum.USER);
     },
   },
 });

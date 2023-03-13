@@ -1,4 +1,4 @@
-export const en = {
+export const EN = {
   title: "Header",
   logout: "Logout",
 };

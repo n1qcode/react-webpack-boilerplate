@@ -8,6 +8,7 @@ const Button: FC<IButton> = (props) => {
   const { children, appearance = "ghost" } = props;
   return (
     <button
+      {...props}
       className={cn(styles.root, { [styles.ghost]: appearance === "ghost" })}
     >
       {children}

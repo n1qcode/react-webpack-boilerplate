@@ -2,12 +2,13 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import * as yup from "yup";
 
-import { useLoginMutation } from "../../../store/api/auth.api";
-import { login } from "../../../store/slices/auth/auth.slice";
-import { PublicRoutes, RouteNames } from "../../../routes/routes.enum";
-import useAppDispatch from "../../../hooks/redux/useAppDispatch";
-import { FormDataType } from "../../../typings/forms.typings";
-import useTranslation from "../../../hooks/useTranslation";
+import { useLoginMutation } from "../../../../store/api/auth.api";
+import { login } from "../../../../store/slices/auth/auth.slice";
+import { PublicRoutes } from "../../../../routes/routes.enum";
+import useAppDispatch from "../../../../hooks/redux/useAppDispatch";
+import { FormDataType } from "../../../../typings/forms.typings";
+import useTranslation from "../../../../hooks/useTranslation";
+import { UserRolesEnum } from "../../../../store/slices/auth/auth.enums";
 
 import * as keySet from "./Login.i18n";
 
@@ -47,12 +48,14 @@ const useLogin = () => {
     loginRequest({ login: "", password: "" });
     // TODO move following code to useEffect after connected auth api
     dispatch(
-      login({ isAuth: true, user: { login: data.login, role: "admin" } })
+      login({
+        isAuth: true,
+        user: { login: data.login, role: UserRolesEnum.ADMIN },
+      })
     );
   };
 
-  const signUpHandler = () =>
-    router(`${RouteNames.ROOT}${PublicRoutes.SIGNUP}`);
+  const signUpHandler = () => router(PublicRoutes.SIGNUP);
 
   return {
     t,

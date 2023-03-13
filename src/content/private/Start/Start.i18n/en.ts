@@ -1,3 +1,3 @@
-export const en = {
+export const EN = {
   start: "Start page",
 };

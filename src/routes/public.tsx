@@ -2,8 +2,8 @@ import { lazy } from "react";
 
 import { PublicRoutes } from "./routes.enum";
 
-const Login = lazy(() => import("../content/public/Login"));
-const SignUp = lazy(() => import("../content/public/SignUp"));
+const Login = lazy(() => import("../content/public/auth/Login"));
+const SignUp = lazy(() => import("../content/public/auth/SignUp"));
 
 const publicContent = [
   {

@@ -1,3 +1,3 @@
-export const ru = {
+export const RU = {
   locale: "Язык",
 };

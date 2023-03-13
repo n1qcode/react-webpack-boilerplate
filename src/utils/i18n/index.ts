@@ -1,5 +1,5 @@
 import { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES } from "./i18n.contants";
-import { LanguageType } from "./i18n.typings";
+import { LanguageEnum } from "./i18n.enums";
 
 const _i18n = (keySet, lang) => {
   return (key: string) => {
@@ -27,7 +27,7 @@ const i18n = (keySet: object, lang) => {
   const _keySet = {};
 
   for (const key in keySet) {
-    if (SUPPORTED_LANGUAGES.includes(key as LanguageType)) {
+    if (SUPPORTED_LANGUAGES.includes(key as LanguageEnum)) {
       _keySet[key] = { ...keySet[key] };
     }
   }

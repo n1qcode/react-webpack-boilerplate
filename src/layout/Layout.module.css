@@ -3,3 +3,14 @@
   flex-direction: column;
   height: 100%;
 }
+
+
+.light {
+  color: var(--text-light);
+  background: var(--bg-light);
+}
+
+.dark {
+  color: var(--text-dark);
+  background: var(--bg-dark);
+}

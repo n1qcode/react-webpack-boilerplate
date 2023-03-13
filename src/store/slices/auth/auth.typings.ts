@@ -1,7 +1,7 @@
-type RoleType = "guest" | "user" | "admin";
+import { UserRolesEnum } from "./auth.enums";
 
 export interface IUser {
-  role: RoleType;
+  role: UserRolesEnum;
   login?: string;
 }
 
