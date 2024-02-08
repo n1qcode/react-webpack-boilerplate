@@ -4,43 +4,58 @@ declare module "*.svg" {
 }
 
 interface StaticImageData {
-  src: string
-  height: number
-  width: number
-  placeholder?: string
+  src: string;
+  height: number;
+  width: number;
+  placeholder?: string;
 }
 
-declare module '*.png' {
+declare module "*.png" {
   const content: StaticImageData;
   export default content;
 }
 
-declare module '*.jpg' {
+declare module "*.jpg" {
   const content: StaticImageData;
   export default content;
 }
 
-declare module '*.jpeg' {
+declare module "*.jpeg" {
   const content: StaticImageData;
   export default content;
 }
 
-declare module '*.gif' {
+declare module "*.gif" {
   const content: StaticImageData;
   export default content;
 }
 
-declare module '*.webp' {
+declare module "*.webp" {
   const content: StaticImageData;
   export default content;
 }
 
-declare module '*.ico' {
+declare module "*.ico" {
   const content: StaticImageData;
   export default content;
 }
 
-declare module '*.bmp' {
+declare module "*.bmp" {
   const content: StaticImageData;
   export default content;
+}
+
+declare module "*.module.css" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module "*.module.scss" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
+}
+
+declare module "*.module.sass" {
+  const classes: { readonly [key: string]: string };
+  export default classes;
 }
